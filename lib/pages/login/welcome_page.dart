@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_flutter_app/auth.dart';
 import 'package:new_flutter_app/pages/login/sign_in_page.dart';
 import 'package:new_flutter_app/pages/login/sign_up_page.dart';
 
@@ -14,28 +15,40 @@ class _WelcomePageState extends State<WelcomePage> {
       appBar: AppBar(
         title: Text('My firebase app'),
       ),
-      body: Column(
+      body: Center(
+          child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          RaisedButton(
+          MaterialButton(
+            color: Colors.yellow,
             onPressed: navigateToSignIn,
             child: Text('Sign in'),
           ),
-          RaisedButton(
+          MaterialButton(
             onPressed: navigateToSignUp,
             child: Text('Sign up'),
           ),
+          MaterialButton(color: Colors.red,
+          child: Text("Sign in with Google"),
+          onPressed: authService.googleSignIn,
+          padding: EdgeInsets.all(10),)
         ],
-      ),
+      )),
     );
   }
 
-  void navigateToSignIn(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage(), fullscreenDialog: true));
+  void navigateToSignIn() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SignInPage(), fullscreenDialog: true));
   }
 
-  void navigateToSignUp(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage(), fullscreenDialog: true));
+  void navigateToSignUp() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SignUpPage(), fullscreenDialog: true));
   }
 }
